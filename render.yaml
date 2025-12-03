@@ -24,7 +24,7 @@ services:
       # LLM Provider (choose one)
       - key: LLM_PROVIDER
         value: groq  # groq is free, openai needs credits
-      - key: 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
+      - key: GROQ_API_KEY
         sync: false  # Set manually in Render Dashboard
       
       
@@ -32,7 +32,7 @@ services:
       # LangSmith Tracing (optional)
       - key: LANGCHAIN_TRACING_V2
         value: "true"
-      - key: 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
+      - key: LANGCHAIN_API_KEY
         sync: false
       - key: LANGCHAIN_PROJECT
         value: tradl-hackathon

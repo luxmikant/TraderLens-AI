@@ -2,6 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-card: #18181b;
+  --bg-card-hover: #27272a;
+  --border-subtle: #27272a;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --accent-cyan: #22d3ee;
+  --bullish: #10b981;
+  --bearish: #f43f5e;
+  --neutral: #fbbf24;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #3f3f46;
+  border-radius: 3px;
+}
+
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(24, 24, 27, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(63, 63, 70, 0.5);
+}
+
+.glass-card:hover {
+  background: rgba(39, 39, 42, 0.9);
+  border-color: rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+}
+
+/* Skeleton loader animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #27272a 25%, #3f3f46 50%, #27272a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* Live pulse */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+.live-dot {
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+/* Sector colors */
+.sector-banking { background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3); }
+.sector-it { background-color: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.3); }
+.sector-pharma { background-color: rgba(20, 184, 166, 0.15); color: #2dd4bf; border-color: rgba(20, 184, 166, 0.3); }
+.sector-auto { background-color: rgba(249, 115, 22, 0.15); color: #fb923c; border-color: rgba(249, 115, 22, 0.3); }
+.sector-energy { background-color: rgba(234, 179, 8, 0.15); color: #facc15; border-color: rgba(234, 179, 8, 0.3); }
+.sector-fmcg { background-color: rgba(236, 72, 153, 0.15); color: #f472b6; border-color: rgba(236, 72, 153, 0.3); }
+.sector-metals { background-color: rgba(156, 163, 175, 0.15); color: #d1d5db; border-color: rgba(156, 163, 175, 0.3); }
+.sector-default { background-color: rgba(113, 113, 122, 0.15); color: #a1a1aa; border-color: rgba(113, 113, 122, 0.3); }
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.card-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Feed tabs */
+.feed-tab {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.feed-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #22d3ee, #06b6d4);
+  border-radius: 1px;
+}
+
+/* Confidence bar */
+.confidence-bar {
+  background: linear-gradient(90deg, #22d3ee 0%, #06b6d4 50%, #0891b2 100%);
+}
+
+/* Impact score ring */
+@keyframes score-fill {
+  from { stroke-dashoffset: 100; }
+}
+
+.score-ring {
+  animation: score-fill 1s ease-out forwards;
+}
+
+/* Upvote button */
+.upvote-btn {
+  transition: all 0.15s ease;
+}
+
+.upvote-btn:hover {
+  background-color: rgba(34, 211, 238, 0.1);
+}
+
+.upvote-btn.active {
+  color: #22d3ee;
+  background-color: rgba(34, 211, 238, 0.15);
+}
+
+/* Bookmark button */
+.bookmark-btn:hover {
+  color: #fbbf24;
+}
+
+.bookmark-btn.active {
+  color: #fbbf24;
+}
+
+/* Progress bar for reading */
+.reading-progress {
+  background: linear-gradient(90deg, #22d3ee, #06b6d4);
+  transition: width 0.3s ease-out;
 }

@@ -394,13 +394,26 @@ class QueryProcessingAgent:
             
             # Create article from result
             metadata = result.get('metadata', {})
+            
+            # Parse sentiment label if present
+            sentiment_label_str = metadata.get('sentiment_label')
+            sentiment_label = None
+            if sentiment_label_str:
+                try:
+                    from src.models.schemas import SentimentLabel
+                    sentiment_label = SentimentLabel(sentiment_label_str)
+                except (ValueError, KeyError):
+                    pass
+            
             article = ProcessedNewsArticle(
                 id=result.get('id', ''),
                 title=metadata.get('title', result.get('content', '')[:100]),
                 content=result.get('content', ''),
                 source=metadata.get('source', 'unknown'),
                 published_at=None,
-                is_duplicate=False
+                is_duplicate=False,
+                sentiment_score=metadata.get('sentiment_score'),
+                sentiment_label=sentiment_label
             )
             
             scored_results.append(QueryResult(

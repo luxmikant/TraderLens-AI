@@ -69,4 +69,28 @@ export const ingestArticle = (article: {
 
 export const triggerRssFetch = () => api.post('/ingest/rss');
 
+// Fetch latest news without query
+export const fetchLatestNews = (limit = 20, sentiment?: string) => {
+  const params: any = { limit };
+  if (sentiment) params.sentiment = sentiment;
+  return api.post<QueryResponse>('/query', { 
+    query: sentiment ? `latest ${sentiment} news` : 'latest financial news market updates', 
+    limit 
+  });
+};
+
+// Fetch trending news (high relevance, recent)
+export const fetchTrendingNews = (limit = 20) =>
+  api.post<QueryResponse>('/query', { 
+    query: 'trending stocks market movers breaking news', 
+    limit 
+  });
+
+// Fetch personalized feed
+export const fetchPersonalizedFeed = (limit = 20) =>
+  api.post<QueryResponse>('/query', { 
+    query: 'indian stock market banking IT pharma sector news', 
+    limit 
+  });
+
 export default api;
