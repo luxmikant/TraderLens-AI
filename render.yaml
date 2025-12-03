@@ -1,0 +1,50 @@
+# Render.com Deployment Configuration for Tradl AI
+# Deploy: Connect GitHub repo → Render auto-detects this file
+
+services:
+  # Main API Service (Free Tier Compatible)
+  - type: web
+    name: tradl-api
+    runtime: python
+    plan: free  # Free tier: 750 hours/month
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python -m spacy download en_core_web_sm
+    startCommand: uvicorn src.api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # Required
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+      - key: ENVIRONMENT
+        value: production
+      
+      # LLM Provider (choose one)
+      - key: LLM_PROVIDER
+        value: groq  # groq is free, openai needs credits
+      - key: GROQ_API_KEY
+        sync: false  # Set manually in Render Dashboard
+      
+      # Optional: OpenAI (if you have credits)
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      
+      # Optional: Anthropic
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      
+      # LangSmith Tracing (optional)
+      - key: LANGCHAIN_TRACING_V2
+        value: "true"
+      - key: LANGCHAIN_API_KEY
+        sync: false
+      - key: LANGCHAIN_PROJECT
+        value: tradl-hackathon
+
+# Note: Free tier doesn't include Redis/PostgreSQL
+# The app uses in-memory cache and SQLite by default
+# Upgrade to starter ($7/mo) for Redis + PostgreSQL

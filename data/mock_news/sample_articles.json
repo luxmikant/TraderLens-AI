@@ -1,0 +1,550 @@
+[
+  {
+    "id": "N001",
+    "title": "HDFC Bank announces 15% dividend, board approves stock buyback",
+    "content": "HDFC Bank declared a 15% dividend for its shareholders in the annual general meeting held today. The board of directors also approved a stock buyback program worth Rs 2,500 crore. CEO Sashidhar Jagdishan expressed confidence in the bank's growth trajectory and robust asset quality.",
+    "source": "moneycontrol",
+    "published_at": "2025-12-01T09:00:00Z",
+    "expected_entities": {
+      "companies": ["HDFC Bank"],
+      "sectors": ["Banking", "Financial Services"],
+      "people": ["Sashidhar Jagdishan"],
+      "events": ["dividend", "buyback"]
+    },
+    "expected_impacts": [
+      {"symbol": "HDFCBANK", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N002",
+    "title": "RBI raises repo rate by 25bps to 6.75%, citing inflation concerns",
+    "content": "The Reserve Bank of India's Monetary Policy Committee raised the repo rate by 25 basis points to 6.75% in its bi-monthly policy review. Governor Shaktikanta Das cited persistent inflation pressures and global uncertainties. The decision was taken with a 5-1 majority vote.",
+    "source": "economic_times",
+    "published_at": "2025-12-01T10:30:00Z",
+    "expected_entities": {
+      "companies": [],
+      "sectors": ["Banking", "Financial Services"],
+      "regulators": ["RBI"],
+      "people": ["Shaktikanta Das"],
+      "events": ["rate_change"]
+    },
+    "expected_impacts": [
+      {"symbol": "HDFCBANK", "confidence": 0.75, "type": "regulatory"},
+      {"symbol": "ICICIBANK", "confidence": 0.75, "type": "regulatory"},
+      {"symbol": "SBIN", "confidence": 0.75, "type": "regulatory"}
+    ]
+  },
+  {
+    "id": "N003",
+    "title": "ICICI Bank opens 500 new branches across Tier-2 cities",
+    "content": "ICICI Bank announced an aggressive expansion plan with 500 new branches to be opened in tier-2 and tier-3 cities over the next 12 months. The move aims to increase rural penetration and capture the growing demand for banking services in smaller towns. MD & CEO Sandeep Bakhshi highlighted the digital-first approach of these new branches.",
+    "source": "business_standard",
+    "published_at": "2025-12-01T11:00:00Z",
+    "expected_entities": {
+      "companies": ["ICICI Bank"],
+      "sectors": ["Banking"],
+      "people": ["Sandeep Bakhshi"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "ICICIBANK", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N004",
+    "title": "Banking sector NPAs decline to 5-year low, credit growth at 16%",
+    "content": "The gross non-performing assets (NPAs) in the Indian banking sector have declined to a 5-year low of 3.9% as of September 2025. Credit growth remains robust at 16% year-on-year, driven by strong retail and MSME lending. RBI's latest Financial Stability Report highlights improved asset quality across public and private sector banks.",
+    "source": "livemint",
+    "published_at": "2025-12-01T12:00:00Z",
+    "expected_entities": {
+      "companies": [],
+      "sectors": ["Banking", "Financial Services"],
+      "regulators": ["RBI"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "HDFCBANK", "confidence": 0.7, "type": "sector"},
+      {"symbol": "ICICIBANK", "confidence": 0.7, "type": "sector"},
+      {"symbol": "SBIN", "confidence": 0.7, "type": "sector"},
+      {"symbol": "AXISBANK", "confidence": 0.7, "type": "sector"},
+      {"symbol": "KOTAKBANK", "confidence": 0.7, "type": "sector"}
+    ]
+  },
+  {
+    "id": "N005",
+    "title": "Reliance Industries Q3 profit up 12% to Rs 18,000 crore",
+    "content": "Reliance Industries Ltd reported a consolidated net profit of Rs 18,000 crore for Q3 FY26, marking a 12% increase year-on-year. The growth was driven by strong performance in Jio Platforms and Reliance Retail. Chairman Mukesh Ambani announced plans to invest Rs 75,000 crore in green energy over the next 3 years.",
+    "source": "financial_express",
+    "published_at": "2025-12-01T14:00:00Z",
+    "expected_entities": {
+      "companies": ["Reliance Industries"],
+      "sectors": ["Energy"],
+      "people": ["Mukesh Ambani"],
+      "events": ["earnings"]
+    },
+    "expected_impacts": [
+      {"symbol": "RELIANCE", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N006",
+    "title": "Reserve Bank hikes interest rates by 0.25% in surprise move",
+    "content": "In a surprise decision, the Reserve Bank of India increased the benchmark interest rate by 0.25 percentage points. Market analysts had expected the central bank to hold rates steady given moderating inflation. Bond yields rose sharply following the announcement.",
+    "source": "moneycontrol",
+    "published_at": "2025-12-01T10:35:00Z",
+    "duplicate_of": "N002",
+    "expected_entities": {
+      "regulators": ["RBI"],
+      "events": ["rate_change"]
+    }
+  },
+  {
+    "id": "N007",
+    "title": "Central bank raises policy rate 25bps, signals hawkish stance",
+    "content": "The central bank raised the key policy rate by 25 basis points and signaled a hawkish monetary policy stance going forward. Inflation remains above the target range and the MPC emphasized the need for continued vigilance.",
+    "source": "business_standard",
+    "published_at": "2025-12-01T10:40:00Z",
+    "duplicate_of": "N002",
+    "expected_entities": {
+      "regulators": ["RBI"],
+      "events": ["rate_change"]
+    }
+  },
+  {
+    "id": "N008",
+    "title": "TCS wins $500 million deal from European bank",
+    "content": "Tata Consultancy Services has won a major digital transformation contract worth $500 million from a leading European bank. The 5-year deal involves modernizing the bank's core banking systems and implementing AI-driven customer service solutions. CEO K Krithivasan expressed confidence in the company's banking domain expertise.",
+    "source": "economic_times",
+    "published_at": "2025-12-01T15:00:00Z",
+    "expected_entities": {
+      "companies": ["TCS"],
+      "sectors": ["IT"],
+      "people": ["K Krithivasan"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "TCS", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N009",
+    "title": "Infosys announces strategic partnership with Microsoft for cloud services",
+    "content": "Infosys announced a strategic partnership with Microsoft to accelerate cloud adoption for enterprises. The collaboration will leverage Azure cloud services and Infosys Cobalt to help clients modernize their IT infrastructure. The partnership is expected to generate $1 billion in revenue over the next 3 years.",
+    "source": "livemint",
+    "published_at": "2025-12-01T16:00:00Z",
+    "expected_entities": {
+      "companies": ["Infosys"],
+      "sectors": ["IT"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "INFY", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N010",
+    "title": "IT sector faces headwinds as US clients cut spending",
+    "content": "Indian IT companies are facing increasing pressure as US clients reduce technology spending amid economic uncertainty. Industry body NASSCOM warned of slower growth in the current fiscal year. Major IT firms including TCS, Infosys, and Wipro may see margin pressure.",
+    "source": "business_standard",
+    "published_at": "2025-12-01T17:00:00Z",
+    "expected_entities": {
+      "companies": ["TCS", "Infosys", "Wipro"],
+      "sectors": ["IT"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "TCS", "confidence": 0.8, "type": "sector"},
+      {"symbol": "INFY", "confidence": 0.8, "type": "sector"},
+      {"symbol": "WIPRO", "confidence": 0.8, "type": "sector"}
+    ]
+  },
+  {
+    "id": "N011",
+    "title": "Maruti Suzuki launches new hybrid SUV, prices start at Rs 12 lakh",
+    "content": "Maruti Suzuki India launched its new hybrid SUV 'Grand Vitara' with prices starting at Rs 12 lakh. The vehicle offers a claimed fuel efficiency of 27 km/l and comes with advanced safety features. Chairman RC Bhargava said the hybrid technology would help reduce emissions.",
+    "source": "moneycontrol",
+    "published_at": "2025-12-01T18:00:00Z",
+    "expected_entities": {
+      "companies": ["Maruti Suzuki"],
+      "sectors": ["Auto"],
+      "people": ["RC Bhargava"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "MARUTI", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N012",
+    "title": "Tata Motors EV sales surge 150% in November",
+    "content": "Tata Motors reported a 150% surge in electric vehicle sales in November 2025, selling over 15,000 units. The Nexon EV continues to dominate the market with 60% share. The company plans to launch 5 new EV models in 2026.",
+    "source": "economic_times",
+    "published_at": "2025-12-01T19:00:00Z",
+    "expected_entities": {
+      "companies": ["Tata Motors"],
+      "sectors": ["Auto"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "TATAMOTORS", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N013",
+    "title": "Auto sector sees strong festive demand, November sales up 20%",
+    "content": "The Indian automobile sector witnessed strong festive season demand with overall sales up 20% in November. Two-wheeler sales grew 25% while passenger vehicles rose 15%. Industry analysts expect the momentum to continue through December.",
+    "source": "financial_express",
+    "published_at": "2025-12-01T20:00:00Z",
+    "expected_entities": {
+      "companies": [],
+      "sectors": ["Auto"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "MARUTI", "confidence": 0.7, "type": "sector"},
+      {"symbol": "TATAMOTORS", "confidence": 0.7, "type": "sector"}
+    ]
+  },
+  {
+    "id": "N014",
+    "title": "Sun Pharma receives USFDA approval for new cancer drug",
+    "content": "Sun Pharmaceutical Industries received US FDA approval for its new cancer treatment drug 'Sunpharma-Oncol'. The drug is expected to generate annual sales of $300 million. MD Dilip Shanghvi called it a landmark achievement for the company's oncology portfolio.",
+    "source": "livemint",
+    "published_at": "2025-12-01T08:00:00Z",
+    "expected_entities": {
+      "companies": ["Sun Pharma"],
+      "sectors": ["Pharma"],
+      "people": ["Dilip Shanghvi"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "SUNPHARMA", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N015",
+    "title": "Dr Reddy's acquires European generic drugs portfolio for $500M",
+    "content": "Dr Reddy's Laboratories announced the acquisition of a European generic drugs portfolio for $500 million. The deal includes 40 product brands across various therapeutic areas. The acquisition will strengthen Dr Reddy's presence in the European market.",
+    "source": "business_standard",
+    "published_at": "2025-12-01T09:30:00Z",
+    "expected_entities": {
+      "companies": ["Dr Reddy's"],
+      "sectors": ["Pharma"],
+      "events": ["merger"]
+    },
+    "expected_impacts": [
+      {"symbol": "DRREDDY", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N016",
+    "title": "Pharma sector outlook positive amid rising healthcare spending",
+    "content": "The Indian pharmaceutical sector outlook remains positive with healthcare spending rising globally. Domestic formulations market grew 10% in the last quarter. Export growth to regulated markets has also accelerated.",
+    "source": "economic_times",
+    "published_at": "2025-12-01T10:00:00Z",
+    "expected_entities": {
+      "companies": [],
+      "sectors": ["Pharma"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "SUNPHARMA", "confidence": 0.7, "type": "sector"},
+      {"symbol": "DRREDDY", "confidence": 0.7, "type": "sector"}
+    ]
+  },
+  {
+    "id": "N017",
+    "title": "Tata Steel to invest Rs 10,000 crore in green steel capacity",
+    "content": "Tata Steel announced plans to invest Rs 10,000 crore in expanding green steel manufacturing capacity. The investment will fund new hydrogen-based steel production facilities at Jamshedpur. CEO TV Narendran emphasized the company's commitment to carbon neutrality by 2045.",
+    "source": "moneycontrol",
+    "published_at": "2025-12-01T11:30:00Z",
+    "expected_entities": {
+      "companies": ["Tata Steel"],
+      "sectors": ["Metals"],
+      "people": ["TV Narendran"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "TATASTEEL", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N018",
+    "title": "Steel prices rise 5% on strong infrastructure demand",
+    "content": "Steel prices in India rose 5% in November driven by robust infrastructure demand. Government's capital expenditure push and real estate recovery are boosting steel consumption. JSW Steel and Tata Steel are expected to benefit from the price uptick.",
+    "source": "livemint",
+    "published_at": "2025-12-01T12:30:00Z",
+    "expected_entities": {
+      "companies": ["JSW Steel", "Tata Steel"],
+      "sectors": ["Metals", "Infrastructure"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "JSWSTEEL", "confidence": 0.8, "type": "sector"},
+      {"symbol": "TATASTEEL", "confidence": 0.8, "type": "sector"}
+    ]
+  },
+  {
+    "id": "N019",
+    "title": "SEBI tightens IPO disclosure norms for startups",
+    "content": "The Securities and Exchange Board of India (SEBI) announced tighter disclosure requirements for startup IPOs. New rules mandate detailed profitability roadmaps and enhanced risk disclosures. The move comes after concerns over some recent IPO valuations.",
+    "source": "business_standard",
+    "published_at": "2025-12-01T13:00:00Z",
+    "expected_entities": {
+      "regulators": ["SEBI"],
+      "events": ["ipo"]
+    },
+    "expected_impacts": []
+  },
+  {
+    "id": "N020",
+    "title": "Bajaj Finance reports 30% growth in AUM, stock hits all-time high",
+    "content": "Bajaj Finance reported 30% growth in assets under management (AUM) to Rs 3 lakh crore. The stock hit an all-time high following the strong quarterly update. MD Rajeev Jain highlighted the robust demand for consumer and MSME loans.",
+    "source": "economic_times",
+    "published_at": "2025-12-01T14:30:00Z",
+    "expected_entities": {
+      "companies": ["Bajaj Finance"],
+      "sectors": ["Financial Services"],
+      "people": ["Rajeev Jain"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "BAJFINANCE", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N021",
+    "title": "Bharti Airtel launches 5G services in 50 new cities",
+    "content": "Bharti Airtel expanded its 5G network to 50 new cities, taking the total coverage to 500 cities. The company claims to offer the fastest 5G speeds in India. Chairman Sunil Mittal announced plans to achieve pan-India 5G coverage by mid-2026.",
+    "source": "financial_express",
+    "published_at": "2025-12-01T15:30:00Z",
+    "expected_entities": {
+      "companies": ["Bharti Airtel"],
+      "sectors": ["Telecom"],
+      "people": ["Sunil Mittal"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "BHARTIARTL", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N022",
+    "title": "L&T wins Rs 15,000 crore Mumbai-Ahmedabad bullet train contract",
+    "content": "Larsen & Toubro won a Rs 15,000 crore contract for the Mumbai-Ahmedabad bullet train project. The contract involves construction of elevated viaducts and stations. CEO SN Subrahmanyan said this is one of the largest infrastructure orders for the company.",
+    "source": "moneycontrol",
+    "published_at": "2025-12-01T16:30:00Z",
+    "expected_entities": {
+      "companies": ["L&T"],
+      "sectors": ["Infrastructure"],
+      "people": ["SN Subrahmanyan"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "LT", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N023",
+    "title": "Adani Group announces Rs 50,000 crore investment in renewable energy",
+    "content": "Adani Group announced a Rs 50,000 crore investment plan for renewable energy projects over the next 3 years. The group aims to become the world's largest solar power producer. Gautam Adani emphasized the commitment to sustainable energy.",
+    "source": "livemint",
+    "published_at": "2025-12-01T17:30:00Z",
+    "expected_entities": {
+      "companies": ["Adani Enterprises"],
+      "sectors": ["Energy", "Infrastructure"],
+      "people": ["Gautam Adani"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "ADANIENT", "confidence": 1.0, "type": "direct"},
+      {"symbol": "ADANIPORTS", "confidence": 0.6, "type": "sector"}
+    ]
+  },
+  {
+    "id": "N024",
+    "title": "Hindustan Unilever raises prices by 5% across product categories",
+    "content": "Hindustan Unilever announced price hikes of 5% across its product portfolio due to rising input costs. The price increase will be effective from January 2026. The FMCG major expects rural demand to recover in the coming quarters.",
+    "source": "business_standard",
+    "published_at": "2025-12-01T18:30:00Z",
+    "expected_entities": {
+      "companies": ["Hindustan Unilever"],
+      "sectors": ["FMCG"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "HINDUNILVR", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N025",
+    "title": "ITC demerger: Hotels business to be listed separately",
+    "content": "ITC announced plans to demerge its hotels business into a separate listed entity. The demerger is expected to unlock value for shareholders. The hotels business will be listed on exchanges within 12 months.",
+    "source": "economic_times",
+    "published_at": "2025-12-01T19:30:00Z",
+    "expected_entities": {
+      "companies": ["ITC"],
+      "sectors": ["FMCG"],
+      "events": ["merger"]
+    },
+    "expected_impacts": [
+      {"symbol": "ITC", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N026",
+    "title": "FMCG sector sees volume recovery as rural demand picks up",
+    "content": "The FMCG sector is witnessing volume recovery with rural demand showing signs of improvement. Companies like HUL, ITC, and Dabur reported positive volume growth in Q2. Analysts expect the trend to continue in the festive season.",
+    "source": "financial_express",
+    "published_at": "2025-12-01T20:30:00Z",
+    "expected_entities": {
+      "companies": ["Hindustan Unilever", "ITC"],
+      "sectors": ["FMCG"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "HINDUNILVR", "confidence": 0.7, "type": "sector"},
+      {"symbol": "ITC", "confidence": 0.7, "type": "sector"}
+    ]
+  },
+  {
+    "id": "N027",
+    "title": "Asian Paints to acquire German coatings company for €200M",
+    "content": "Asian Paints announced the acquisition of a German decorative coatings company for €200 million. The acquisition will strengthen the company's presence in Europe. MD Amit Syngle said it aligns with the global expansion strategy.",
+    "source": "moneycontrol",
+    "published_at": "2025-12-01T08:30:00Z",
+    "expected_entities": {
+      "companies": ["Asian Paints"],
+      "sectors": ["FMCG"],
+      "people": ["Amit Syngle"],
+      "events": ["merger"]
+    },
+    "expected_impacts": [
+      {"symbol": "ASIANPAINT", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N028",
+    "title": "Titan Q3 update: Jewellery segment growth at 25%",
+    "content": "Titan Company reported strong Q3 performance with jewellery segment growing 25% year-on-year. The festive season boosted sales across all categories. Watches and eyewear segments also showed double-digit growth.",
+    "source": "livemint",
+    "published_at": "2025-12-01T09:45:00Z",
+    "expected_entities": {
+      "companies": ["Titan"],
+      "sectors": ["FMCG"],
+      "events": ["earnings"]
+    },
+    "expected_impacts": [
+      {"symbol": "TITAN", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N029",
+    "title": "NTPC commissions 1000 MW solar power plant in Rajasthan",
+    "content": "NTPC commissioned a 1000 MW solar power plant in Rajasthan, the largest single-location solar facility in India. The plant will generate clean energy for over 500,000 households. CMD Gurdeep Singh highlighted NTPC's renewable energy targets.",
+    "source": "business_standard",
+    "published_at": "2025-12-01T10:45:00Z",
+    "expected_entities": {
+      "companies": ["NTPC"],
+      "sectors": ["Energy"],
+      "people": ["Gurdeep Singh"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "NTPC", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N030",
+    "title": "Power Grid wins Rs 5,000 crore transmission project",
+    "content": "Power Grid Corporation of India won a Rs 5,000 crore inter-state transmission project through tariff-based competitive bidding. The project involves construction of high voltage transmission lines connecting renewable energy zones.",
+    "source": "economic_times",
+    "published_at": "2025-12-01T11:45:00Z",
+    "expected_entities": {
+      "companies": ["Power Grid"],
+      "sectors": ["Energy"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "POWERGRID", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N031",
+    "title": "Kotak Mahindra Bank launches AI-powered wealth management platform",
+    "content": "Kotak Mahindra Bank launched an AI-powered wealth management platform for HNI clients. The platform uses machine learning for personalized investment recommendations. MD Ashok Vaswani said digital innovation is a key focus area.",
+    "source": "financial_express",
+    "published_at": "2025-12-01T12:45:00Z",
+    "expected_entities": {
+      "companies": ["Kotak Mahindra Bank"],
+      "sectors": ["Banking", "Financial Services"],
+      "people": ["Ashok Vaswani"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "KOTAKBANK", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N032",
+    "title": "Axis Bank to raise Rs 10,000 crore through QIP",
+    "content": "Axis Bank announced plans to raise Rs 10,000 crore through qualified institutional placement (QIP). The funds will be used to strengthen the capital base and support business growth. The QIP is expected to be completed within 3 months.",
+    "source": "moneycontrol",
+    "published_at": "2025-12-01T13:45:00Z",
+    "expected_entities": {
+      "companies": ["Axis Bank"],
+      "sectors": ["Banking"],
+      "events": ["rights_issue"]
+    },
+    "expected_impacts": [
+      {"symbol": "AXISBANK", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N033",
+    "title": "SBI reports highest-ever quarterly profit of Rs 16,000 crore",
+    "content": "State Bank of India reported its highest-ever quarterly profit of Rs 16,000 crore in Q2 FY26. Net interest income grew 18% year-on-year while asset quality improved. Chairman Dinesh Kumar Khara attributed the performance to robust loan growth.",
+    "source": "livemint",
+    "published_at": "2025-12-01T14:45:00Z",
+    "expected_entities": {
+      "companies": ["State Bank of India"],
+      "sectors": ["Banking"],
+      "people": ["Dinesh Kumar Khara"],
+      "events": ["earnings"]
+    },
+    "expected_impacts": [
+      {"symbol": "SBIN", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N034",
+    "title": "Wipro secures $1 billion deal with global tech firm",
+    "content": "Wipro announced a $1 billion multi-year deal with a Fortune 500 technology company. The engagement involves end-to-end IT infrastructure management and digital transformation services. CEO Thierry Delaporte called it a transformative win.",
+    "source": "business_standard",
+    "published_at": "2025-12-01T15:45:00Z",
+    "expected_entities": {
+      "companies": ["Wipro"],
+      "sectors": ["IT"],
+      "people": ["Thierry Delaporte"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "WIPRO", "confidence": 1.0, "type": "direct"}
+    ]
+  },
+  {
+    "id": "N035",
+    "title": "HCL Tech expands partnership with Google Cloud",
+    "content": "HCL Technologies expanded its strategic partnership with Google Cloud to accelerate enterprise cloud adoption. The collaboration will focus on industry-specific cloud solutions for manufacturing and healthcare sectors.",
+    "source": "economic_times",
+    "published_at": "2025-12-01T16:45:00Z",
+    "expected_entities": {
+      "companies": ["HCL Technologies"],
+      "sectors": ["IT"],
+      "events": []
+    },
+    "expected_impacts": [
+      {"symbol": "HCLTECH", "confidence": 1.0, "type": "direct"}
+    ]
+  }
+]
