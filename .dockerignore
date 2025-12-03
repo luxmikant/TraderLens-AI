@@ -1,0 +1,52 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv
+venv
+ENV
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Testing
+.pytest_cache
+.coverage
+htmlcov
+.tox
+
+# Build artifacts
+*.egg-info
+dist
+build
+
+# Local data (rebuild in container)
+*.db
+*.sqlite
+chroma_db/
+logs/
+
+# Docs
+*.md
+!README.md
+
+# Dev files
+.env.example
+docker-compose*.yml
+!docker-compose.cloud.yml
+Makefile
+
+# Large unnecessary files
+*.log
+*.tmp
+node_modules/
+frontend/node_modules/

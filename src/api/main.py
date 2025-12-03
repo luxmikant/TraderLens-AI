@@ -20,6 +20,7 @@ from src.agents.ingestion_agent import get_ingestion_agent
 from src.agents.storage_agent import get_storage_agent
 from src.utils.retry import health_checker
 from src.api.advanced_routes import router as advanced_router
+from src.api.insights_routes import router as insights_router
 from src.monitoring.metrics import get_metrics, set_app_info, PROMETHEUS_AVAILABLE
 
 
@@ -64,6 +65,9 @@ app.add_middleware(
 
 # Include advanced features router
 app.include_router(advanced_router)
+
+# Include insights router (Impact Score, Heatmap, Narratives, User Prefs)
+app.include_router(insights_router)
 
 
 # ================== Prometheus Metrics Endpoint ==================

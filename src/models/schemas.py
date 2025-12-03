@@ -257,6 +257,54 @@ class StatsResponse(BaseModel):
     sectors: Dict[str, int]
 
 
+# ================== Insight Models ==================
+
+class ImpactScoreComponents(BaseModel):
+    """Breakdown of impact score components"""
+    sentiment: float
+    recency: float
+    entity_importance: float
+    source_reliability: float
+    surprise_factor: float
+
+
+class ImpactScorePayload(BaseModel):
+    """Impact score response for a single article"""
+    article_id: str
+    headline: str
+    source: str
+    published_at: Optional[datetime]
+    impact_score: float
+    impact_direction: str
+    components: ImpactScoreComponents
+    impacted_symbols: List[str] = []
+    sector_tags: List[str] = []
+    summary: Optional[str] = None
+
+
+class ImpactLeaderboardResponse(BaseModel):
+    """Top impact stories within a time window"""
+    generated_at: datetime
+    window_hours: int
+    articles: List[ImpactScorePayload]
+
+
+class AttentionHeatmapCell(BaseModel):
+    """Attention snapshot for a single sector"""
+    sector: str
+    attention_score: float
+    sentiment_score: Optional[float]
+    recent_mentions: int
+    baseline_mentions: float
+
+
+class AttentionHeatmapResponse(BaseModel):
+    """Heatmap response across sectors"""
+    generated_at: datetime
+    window_hours: int
+    sectors: List[AttentionHeatmapCell]
+
+
 # ================== Alert Models (Bonus) ==================
 
 class AlertSubscription(BaseModel):
