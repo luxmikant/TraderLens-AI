@@ -555,3 +555,168 @@ async def aggregate_sentiment(texts: List[str]):
     result = agent.get_aggregated_sentiment(texts)
     
     return result or {"error": "No valid results"}
+
+
+# ================== Insights (NEW) ==================
+
+@router.get("/insights/impact/{article_id}")
+async def get_article_impact(article_id: str):
+    """Get impact score breakdown for a single article."""
+    from src.features.impact_index import get_impact_index_service
+
+    service = get_impact_index_service()
+    payload = service.score_article(article_id)
+    if not payload:
+        raise HTTPException(404, "Article not found")
+    return payload.dict()
+
+
+@router.get("/insights/leaderboard")
+async def get_impact_leaderboard(
+    hours: int = Query(24, ge=1, le=168),
+    limit: int = Query(15, ge=1, le=50),
+):
+    """Top impact articles (Market Movers) within a time window."""
+    from src.features.impact_index import get_impact_index_service
+
+    service = get_impact_index_service()
+    return service.top_articles(window_hours=hours, limit=limit).dict()
+
+
+@router.get("/insights/heatmap")
+async def get_attention_heatmap(
+    hours: int = Query(24, ge=1, le=168),
+    baseline_days: int = Query(7, ge=1, le=30),
+):
+    """Attention heatmap across sectors."""
+    from src.features.attention_heatmap import get_attention_service
+
+    service = get_attention_service()
+    return service.get_heatmap(window_hours=hours, baseline_days=baseline_days).dict()
+
+
+@router.get("/insights/narratives")
+async def get_narratives(
+    hours: int = Query(48, ge=12, le=168),
+    min_size: int = Query(3, ge=2, le=10),
+    max_results: int = Query(8, ge=1, le=20),
+):
+    """Detect narrative clusters from recent news."""
+    from src.features.narrative_detector import get_narrative_detector
+
+    detector = get_narrative_detector()
+    narratives = detector.detect_narratives(
+        window_hours=hours, min_cluster_size=min_size, max_narratives=max_results
+    )
+    return {
+        "generated_at": datetime.utcnow().isoformat(),
+        "narratives": [
+            {
+                "cluster_id": n.cluster_id,
+                "label": n.label,
+                "summary": n.summary,
+                "article_count": n.article_count,
+                "avg_sentiment": n.avg_sentiment,
+                "sectors": n.sectors,
+                "top_articles": n.top_articles,
+                "first_seen": n.first_seen.isoformat(),
+                "last_seen": n.last_seen.isoformat(),
+            }
+            for n in narratives
+        ],
+    }
+
+
+@router.get("/insights/trending")
+async def get_trending_symbols(
+    hours: int = Query(24, ge=1, le=168),
+    limit: int = Query(10, ge=1, le=30),
+):
+    """Trending symbols in the current news cycle."""
+    from src.features.trending import get_trending_service
+
+    service = get_trending_service()
+    response = service.get_trending(window_hours=hours, limit=limit)
+    return {
+        "generated_at": response.generated_at.isoformat(),
+        "window_hours": response.window_hours,
+        "symbols": [
+            {
+                "symbol": s.symbol,
+                "mention_count": s.mention_count,
+                "avg_sentiment": s.avg_sentiment,
+                "direction": s.direction,
+            }
+            for s in response.symbols
+        ],
+    }
+
+
+# ================== Bookmarks & Watchlist ==================
+
+@router.post("/bookmarks/{user_id}/add")
+async def add_bookmark(user_id: str, article_id: str):
+    """Add an article to user's bookmarks."""
+    from src.features.bookmarks import get_bookmark_service
+
+    service = get_bookmark_service()
+    service.add_bookmark(user_id, article_id)
+    return {"status": "bookmarked", "article_id": article_id}
+
+
+@router.delete("/bookmarks/{user_id}/remove")
+async def remove_bookmark(user_id: str, article_id: str):
+    """Remove article from user's bookmarks."""
+    from src.features.bookmarks import get_bookmark_service
+
+    service = get_bookmark_service()
+    removed = service.remove_bookmark(user_id, article_id)
+    return {"status": "removed" if removed else "not_found", "article_id": article_id}
+
+
+@router.get("/bookmarks/{user_id}")
+async def list_bookmarks(user_id: str):
+    """List all bookmarked article IDs for a user."""
+    from src.features.bookmarks import get_bookmark_service
+
+    service = get_bookmark_service()
+    return {"user_id": user_id, "bookmarks": service.get_bookmarks(user_id)}
+
+
+@router.post("/watchlist/{user_id}/add")
+async def add_to_watchlist(user_id: str, item_type: str, value: str):
+    """Add a symbol or sector to watchlist."""
+    from src.features.bookmarks import get_bookmark_service
+
+    if item_type not in ("symbol", "sector"):
+        raise HTTPException(400, "item_type must be 'symbol' or 'sector'")
+
+    service = get_bookmark_service()
+    item = service.add_to_watchlist(user_id, item_type, value)
+    return {"status": "added", "item_type": item.item_type, "value": item.value}
+
+
+@router.delete("/watchlist/{user_id}/remove")
+async def remove_from_watchlist(user_id: str, item_type: str, value: str):
+    """Remove a symbol or sector from watchlist."""
+    from src.features.bookmarks import get_bookmark_service
+
+    service = get_bookmark_service()
+    removed = service.remove_from_watchlist(user_id, item_type, value)
+    return {"status": "removed" if removed else "not_found"}
+
+
+@router.get("/watchlist/{user_id}")
+async def list_watchlist(user_id: str):
+    """List watchlist items for a user."""
+    from src.features.bookmarks import get_bookmark_service
+
+    service = get_bookmark_service()
+    items = service.get_watchlist(user_id)
+    return {
+        "user_id": user_id,
+        "watchlist": [
+            {"type": i.item_type, "value": i.value, "created_at": i.created_at.isoformat()}
+            for i in items
+        ],
+    }

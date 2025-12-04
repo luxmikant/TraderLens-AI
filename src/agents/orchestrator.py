@@ -178,12 +178,13 @@ async def sentiment_node(state: NewsState) -> NewsState:
         
         # Check if FinBERT is available
         if not agent.is_available:
-            logger.warning("FinBERT not available, skipping sentiment analysis")
+            logger.warning("FinBERT not available (transformers not installed), skipping sentiment analysis")
             return state
         
         # Analyze sentiment on full content
         content = state.get("normalized_content") or f"{state['raw_news'].title}\n\n{state['raw_news'].content}"
         
+        logger.info(f"Running sentiment analysis on: {state['raw_news'].title[:60]}...")
         result = agent.analyze(content)
         
         if result:
@@ -194,19 +195,24 @@ async def sentiment_node(state: NewsState) -> NewsState:
                 "neutral": SentimentLabel.NEUTRAL
             }
             
+            sentiment_label = label_map.get(result.label.value, SentimentLabel.NEUTRAL)
+            logger.info(f"Sentiment result: {sentiment_label.value} (score: {result.score:.3f})")
+            
             return {
                 **state,
                 "sentiment_score": result.score,
-                "sentiment_label": label_map.get(result.label.value, SentimentLabel.NEUTRAL).value
+                "sentiment_label": sentiment_label.value
             }
+        else:
+            logger.warning(f"Sentiment analysis returned None for: {state['raw_news'].title[:60]}")
         
         return state
         
     except Exception as e:
-        logger.error(f"Sentiment analysis error: {e}")
+        logger.error(f"Sentiment analysis error: {e}", exc_info=True)
         return {
             **state,
-            "errors": [f"Sentiment analysis error: {str(e)}"]
+            "errors": state.get("errors", []) + [f"Sentiment analysis error: {str(e)}"]
         }
 
 

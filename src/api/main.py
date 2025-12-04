@@ -20,6 +20,7 @@ from src.agents.ingestion_agent import get_ingestion_agent
 from src.agents.storage_agent import get_storage_agent
 from src.utils.retry import health_checker
 from src.api.advanced_routes import router as advanced_router
+from src.api.insights_routes import router as insights_router
 from src.monitoring.metrics import get_metrics, set_app_info, PROMETHEUS_AVAILABLE
 
 
@@ -64,6 +65,9 @@ app.add_middleware(
 
 # Include advanced features router
 app.include_router(advanced_router)
+
+# Include insights router (Impact Score, Heatmap, Narratives, User Prefs)
+app.include_router(insights_router)
 
 
 # ================== Prometheus Metrics Endpoint ==================
@@ -499,6 +503,66 @@ async def get_sample_queries():
             }
         ]
     }
+
+
+@app.get("/debug/sentiment-test")
+async def test_sentiment():
+    """
+    Test sentiment analysis functionality.
+    """
+    try:
+        from src.agents.sentiment_agent import get_sentiment_agent
+        
+        agent = get_sentiment_agent()
+        
+        # Check if transformers is available
+        if not agent.is_available:
+            return {
+                "status": "error",
+                "message": "Transformers library not available. Install with: pip install transformers torch"
+            }
+        
+        # Test sentiment analysis
+        test_texts = [
+            "HDFC Bank reported record quarterly profits, beating analyst estimates",
+            "Wipro cuts guidance amid weak IT spending, stock plunges",
+            "Sensex closes flat as markets await RBI policy decision"
+        ]
+        
+        results = []
+        for text in test_texts:
+            result = agent.analyze(text)
+            if result:
+                results.append({
+                    "text": text[:60] + "...",
+                    "sentiment": result.label.value,
+                    "score": round(result.score, 3),
+                    "raw_scores": {k: round(v, 3) for k, v in result.raw_scores.items()}
+                })
+            else:
+                results.append({
+                    "text": text[:60] + "...",
+                    "error": "Analysis failed"
+                })
+        
+        return {
+            "status": "success",
+            "model": agent.model_name,
+            "device": agent.device,
+            "test_results": results
+        }
+        
+    except ImportError as e:
+        return {
+            "status": "error",
+            "message": f"Import error: {str(e)}",
+            "solution": "Install transformers: pip install transformers torch accelerate"
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e)
+        }
 
 
 # ================== Run Server ==================

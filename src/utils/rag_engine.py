@@ -256,6 +256,43 @@ Content: {content}
         
         return "\n".join(context_parts)
 
+    # ---- Calibration Integration ----
+    def synthesize_with_calibration(
+        self,
+        query: str,
+        retrieved_docs: List[Dict],
+    ) -> Optional[Dict[str, Any]]:
+        """Synthesize answer and include calibration metrics."""
+        from src.features.calibration import get_calibrator
+
+        response = self.synthesize_answer(query, retrieved_docs)
+        if not response:
+            return None
+
+        source_texts = [d.get("content", "") for d in retrieved_docs[:self.max_context_docs]]
+        source_sentiments = [
+            d.get("metadata", {}).get("sentiment_score")
+            for d in retrieved_docs[:self.max_context_docs]
+        ]
+        source_sentiments = [s for s in source_sentiments if s is not None]
+
+        calibrator = get_calibrator()
+        calibration = calibrator.calibrate(
+            answer=response.answer,
+            source_docs=source_texts,
+            source_sentiments=source_sentiments if source_sentiments else None,
+        )
+
+        return {
+            **response.to_dict(),
+            "calibration": {
+                "evidence_coverage": calibration.evidence_coverage,
+                "source_agreement_score": calibration.source_agreement_score,
+                "hallucination_risk": calibration.hallucination_risk,
+                "confidence_level": calibration.confidence_level,
+            },
+        }
+
 
 # ================== Singleton ==================
 
